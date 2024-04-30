@@ -1,8 +1,8 @@
-package exercises
+package lectures.basics
 
 import scala.annotation.tailrec
 
-object basics extends App {
+object Basics extends App {
 
   /*
   1. A greeting function (name, age) => "Hi, my name is $name and I am $age years old."
