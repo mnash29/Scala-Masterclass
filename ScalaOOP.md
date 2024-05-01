@@ -86,3 +86,121 @@ object MethodNotations extends App {
   println(mary()) // equivalent
 }
 ```
+
+### Scala Objects
+
+Scala does not have class-level functionality, e.g. static methods/vars. Objects
+are all singleton instances. Can separate instance level functionality from class
+(static) level functionality
+
+```scala
+object Person { // static/class level (singleton)
+  val N_EYES = 2
+  def canFly: Boolean = false
+  
+  // Factory method
+  def from(mother: Person, father: Person): Person = new Person("Bobbie")
+}
+
+class Person(val name: String) { // instance level
+}
+
+println(Person.N_EYES)
+println(Person.canFly)
+
+// Singleton
+val mary = Person
+val john = Person
+mary == john // true
+
+val susan = new Person("Susan")
+val tom = new Person("Tom")
+println(susan == tom) // false
+
+// Call factory method `from()`
+val bobbie = Person(susan, tom)
+```
+
+### Scala Applications
+
+A Scala Object with a particular method `main(args: Array[String]): Unit`
+
+```scala
+class EventsService extends App { } 
+  
+// Equivalent to EventsService  
+class LoggingService {
+  def main(args: Array[String]): Unit = { }
+}
+```
+
+### Inheritance
+
+Preventing overriding by derived classes can be done in three ways:
+1. Adding `final` to the method definition `final def method()`
+2. Adding `final` to the entire class `final class Service`
+3. Sealing the class `sealed class Service`, extends derived classes in the current file but closed it off to external classes.
+
+```scala
+class Service(name: String) {
+  val service_type: String = this.getClass.toString
+  def sendEvent: String = "Sending event"
+
+  // Required if Service is extended without parameters
+  def this() = this("Default name")
+  
+  // Prevent overriding in derived classes
+  final def register: Unit = println("Registering service")
+}
+
+class LoggingService(name: String, level: String) extends Service {
+  // Override
+  override val service_type = this.getClass
+  override def sendEvent: String = {
+    println(super.sendEvent)
+    "Pushing to write-ahead-log"
+  }
+}
+
+// Parent member variables can also be overridden in the child constructor
+class QueueService(name: String, override val service_type: String) extends Service {}
+
+// Polymorphism
+var unknownService: Service = new QueueService("EventQueue", "QueueService")
+println(unknownService.sendEvent) // "Sending event"
+println(unknownService.service_type) // QueueService
+```
+
+### Abstract Data Types
+
+Abstract data types are made to be implemented later.
+
+```scala
+abstract class Service {
+  val service_type: String
+  def sendEvent: Unit
+}
+
+class LoggingService extends Service {
+  val service_type: String = this.getClass.toString
+  def sendEvent: Unit = println("Pushing to write-ahead-log")
+}
+
+// Traits
+// Do not have constructor parameters
+// Can only extend one class but multiple traits
+// Traits define `behavior` while abstract defines `thing`
+trait Stream {
+  def sendEvent(endpoint: String): Unit
+}
+
+class QueueService extends Service with Stream {
+  val service_type: String = this.getClass.toString
+  def sendEvent: Unit = println("Sending PutMessage event")
+  def sendEvent(endpoint: String): Unit = println(s"Sending PutMessage event to $endpoint")
+}
+
+val queue = new QueueService
+queue.sendEvent // Sending PutMessage event
+queue.sendEvent("localhost:8080") // Sending PutMessage event to localhost:8080
+```
