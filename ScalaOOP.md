@@ -251,3 +251,25 @@ class Event[R <: Request](request: R) // Event only accepts types of subtype Ser
 val event = new Event(new Request)
 val newEvent = new Event(new Service) // ERROR
 ```
+
+### Anonymous Classes
+
+```scala
+object AnonymousClass extends App {
+  abstract class Worker {
+    def execute: Unit
+  }
+
+  // Anonymous class
+  var executeTask: Worker = new Worker {
+    override def execute: Unit = println("Starting task execution...")
+  }
+  println(executeTask.getClass) // package.AnonymousClass$$anon$1
+  
+  /* Compiler creates background anonymous class:
+  
+  class AnonymousClass$$anon$1 extends Worker {...}
+  var executeTask: Worker = new AnonymousClass$$anon$1
+   */
+}
+```
