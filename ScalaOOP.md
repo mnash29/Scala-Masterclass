@@ -301,3 +301,56 @@ val accessWorker = taskWorker.copy(log="/service/access.logs")
 // Instantiation uses `apply()` method
 val databaseWorker = Worker("Database", "/db/wal/logs")
 ```
+
+### Enums
+
+```scala
+
+// Sealed
+enum Permissions {
+  case READ, WRITE, EXECUTE, NONE
+  
+  def openDocument(): Unit =
+    if (this == READ) println("Opening document")
+    else println("Operation not allowed")
+}
+
+val readPermission: Permissions = Permissions.READ
+readPermission.openDocument()
+
+// Constructor args
+enum PermissionWithBits(bits: Int) {
+  case READ extends PermissionWithBits(4)
+  case WRITE extends PermissionWithBits(2)
+  case EXECUTE extends PermissionWithBits(1)
+  case NONE extends PermissionWithBits(0)
+}
+
+object PermissionWithBits {
+  def fromBits(bits: Int): PermissionWithBits = PermissionWithBits.NONE
+}
+
+val allPermissions = PermissionWithBits.values // All possible values
+val writePermission = Permissions.valueOf("WRITE")
+```
+
+### Exceptions
+
+```scala
+// Exceptions and Error extend the Throwable class
+def getInt(withExceptions: Boolean): Int =
+  if (withExceptions) throw new Exception()("No INT for you!")
+  
+try {
+  getInt(true)
+} catch {
+  case e: RuntimeException => println("caught RuntimeException")
+  case e: Exception => println("unhandled Exception caught")
+} finally {
+  // Code that will be executed but not returned from expression
+  println("finally block")
+}
+
+// Custom Exceptions
+class ServiceException extends Exception
+```
