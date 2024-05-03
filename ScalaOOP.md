@@ -354,3 +354,44 @@ try {
 // Custom Exceptions
 class ServiceException extends Exception
 ```
+
+### Packing and imports
+
+Objects in different packages must be imported for instantiation. Package Objects are used to access methods residing 
+outside classes and can only contain one package object.
+
+Default imports
+1. java.lang - String, Object, Exception
+2. scala - Int, Nothing, Function
+3. scala.Predef - println(), ???
+
+```scala
+package lectures
+
+package object hello {
+  def sayHello: Unit = println("Hello World")
+  val SPEED_OF_LIGHT = 299792458
+}
+```
+
+```scala
+package lectures.oop
+
+object Service extends App {
+  sayHello // prints "Hello World"
+  println(SPEED_OF_LIGHT) // 299792458
+}
+
+// Grouping imports
+import playground.{LoggingService, QueueService}
+
+// Import all
+import playground._
+
+// If two imports have the same name, you can
+// 1. Use fully qualified name
+val sqlDate = java.sql.Date()
+// 2. Aliasing
+import java.util.Date
+import java.sql.{Date => SqlDate}
+```
