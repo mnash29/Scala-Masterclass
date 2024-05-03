@@ -1,4 +1,4 @@
-# Object Oriented Programming
+# Object Oriented Programming in Scala
 
 ### Declaring an object
 
@@ -272,4 +272,32 @@ object AnonymousClass extends App {
   var executeTask: Worker = new AnonymousClass$$anon$1
    */
 }
+```
+
+### Case Classes
+
+Solution for reducing boilerplate implementations of standards methods in lightweight
+classes
+1. Promotes class parameters to fields
+2. Implements equals and hashCode methods
+3. Copy method
+4. Instantiation uses `apply` method
+5. Serializable (useful in Akka pattern)
+6. Extractor patterns (pattern matching)
+
+```scala
+// Promotes all class parameters to fields
+case class Worker(serviceName: String, log: String)
+val taskWorker = new Worker("Logging", "/service/logs")
+println(taskWorker) // Worker(Logging, /service/logs)
+
+// Equals and hashCode implemented
+val newWorker = new Worker("Logging", "/service/logs")
+println(taskWorker == newWorker) // true
+
+// Handy copy methods
+val accessWorker = taskWorker.copy(log="/service/access.logs")
+
+// Instantiation uses `apply()` method
+val databaseWorker = Worker("Database", "/db/wal/logs")
 ```
