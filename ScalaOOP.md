@@ -204,3 +204,50 @@ val queue = new QueueService
 queue.sendEvent // Sending PutMessage event
 queue.sendEvent("localhost:8080") // Sending PutMessage event to localhost:8080
 ```
+
+### Generics
+
+```scala
+class MyList[A] {
+  // use type A inside definition
+}
+
+val listOfIntegers = MyList[Int]
+val listOfStrings = MyList[String]
+
+class HashMap[K, V] { } // Can contain multiple types
+
+// Generic methods
+
+object MyList {
+  def empty[A]: MyList[A] = ???
+  def add[B >: A](element: B): MyList[B] = ???] // Bounded super type A
+}
+val emptyListOfIntegers = MyList.empty[Int]
+
+// Covariant lists
+
+class Service
+class QueueService extends Service
+class LoggingService extends Service
+class Request
+
+// 1. Covariance - List[QueueService] extends list[Service]
+class CovariantList[+S]
+val queueList: CovariantList[Service] = new CovariantList[QueueService] // OK
+queueList.add(new LoggingService) // ??? Creates a list of Service types
+
+// 2. Invariance
+class InvariantList[S]
+val invariantList: InvariantList[Service] = new InvariantList[QueueService] // ERROR
+val invariantList: InvariantList[Service] = new InvariantList[Service] // OK
+
+// 3. Contravariance
+class Orchestrator[-S]
+val orchestrator: Orchestrator[QueueService] = new Orchestrator[Service] // OK
+
+// Bounded types - sub <: - super >:
+class Event[R <: Request](request: R) // Event only accepts types of subtype Service
+val event = new Event(new Request)
+val newEvent = new Event(new Service) // ERROR
+```
