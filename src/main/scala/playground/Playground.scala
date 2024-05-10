@@ -10,7 +10,7 @@ object Playground {
     2. Factorial function (n) => n * factorial(n-1)
     3. Fibonacci function (n) => f(n - 1) + f(n - 2)
     4. Prime numbers
-     */
+
 
     def greeting(name: String, age: Int): Unit = println(s"Hello, my name is $name and I am $age years old.")
     greeting("Matthew", 38)
@@ -55,5 +55,22 @@ object Playground {
     val speed = 1.2233445f
     val myth = f"$name%s can eat $speed%.2f burgers per minute"
     println(myth)
+    */
+
+    def abs(x: Double): Double = if (x < 0) -x else x
+
+    def sqrt(x: Double): Double = {
+      def sqrtIter(guess: Double): Double =
+        if (isGoodEnough(guess)) guess
+        else sqrtIter(improve(guess))
+
+      def isGoodEnough(guess: Double): Boolean = abs(guess * guess - x) < 0.0000001
+
+      def improve(guess: Double): Double = (guess + x / guess) / 2
+
+      sqrtIter(1.0)
+    }
+
+    println(sqrt(1.0e10))
   }
 }
