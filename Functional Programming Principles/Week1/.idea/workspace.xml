@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b1180f96-779e-43ab-9e8e-4512b6b5b387" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.bsp/sbt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/sbt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/scala_compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../project/build.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/example/Lists.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/lectures/basics/Basics.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/lectures/functional/FunctionTypes.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/lectures/oop/AbstractDataTypes.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/lectures/oop/CaseClasses.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/lectures/oop/Exceptions.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/lectures/oop/Generics.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/lectures/oop/Inheritance.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/lectures/oop/OOPBasics.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/playground/Playground.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/recfun/RecFun.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main/scala/recfun/RecFunInterface.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/test/scala/example/ListsSuite.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/test/scala/recfun/RecFunSuite.scala" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2gToI7kdulg2RlgSK2OtrnAV4Ij" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/a206568245/Projects/Scala/ScalaMasterclass/Functional Programming Principles/week1"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1180f96-779e-43ab-9e8e-4512b6b5b387" name="Changes" comment="" />
+      <created>1715730845779</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715730845779</updated>
+    </task>
+    <servers />
+  </component>
+</project>
