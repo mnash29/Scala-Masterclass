@@ -67,6 +67,37 @@ class FunSetSuite extends munit.FunSuite:
       assert(!contains(s, 3), "Union 3")
   }
 
+  test("intersection contains elements in both sets") {
+    new TestSets:
+      val us1 = union(s1, s2)
+      val us2 = union(us1, s3)
+      val is = intersect(us2, s1)
+      assert(contains(is, 1))
+      assert(!contains(is, 2))
+  }
+
+  test("difference contains elements in one but not the other") {
+    new TestSets:
+      val us1 = union(s1, s2)
+      val us2 = union(s2, s3)
+      val ds = diff(us1, us2)
+      assert(contains(ds, 1))
+      assert(!contains(ds, 2))
+  }
+
+  test("filtered set contains values less than 3") {
+    new TestSets:
+      val us1 = union(s1, s2)
+      val us2 = union(us1, s3)
+      val fs = filter(us2, (x => x < 3))
+      assert(!contains(fs, 3))
+  }
+
+  test("mapped set contains element * 2") {
+    new TestSets:
+      val ms = map(s3, (x => x * 2))
+      assert(contains(ms, 6))
+  }
 
 
   import scala.concurrent.duration.*
