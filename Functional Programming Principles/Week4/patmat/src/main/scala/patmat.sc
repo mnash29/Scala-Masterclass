@@ -68,7 +68,16 @@ trait Function1[-T, +U]:
 // contravariant type parameters can only appear in method parameters
 // and invariant types can appear anywhere
 
-var l1 = List(1,2,3)
-var l2 = List(4,5,6)
+var l1 = List(1,2,3,4)
+var l2 = ::(4, List(5, 6))
 var l3 = l1 :: l2
 var l4 = l1 ::: l2
+var l5 = ::('a', Nil)
+var l6 = 'a'
+
+l5 match {
+  case l @ (_ :: _ :: _) => println(s"many $l")
+  case l => println(s"single $l")
+}
+var l7 = l1 :+ 7
+
