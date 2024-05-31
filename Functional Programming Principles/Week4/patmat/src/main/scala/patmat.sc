@@ -50,3 +50,25 @@ end Direction
 val r = Direction.Right
 val u = r.leftTurn
 val w = r.rightTurn
+
+// Variance
+trait Fruit
+class Apple extends Fruit
+class Orange extends Fruit
+
+type FtoO = Fruit => Orange // covariant
+type AtoF = Apple => Fruit // contravariant
+
+// Functions are contravariant in their argument type(s) and
+// covariant in their return type
+trait Function1[-T, +U]:
+  def apply(x: T): U
+
+// Roughly, covariant type parameters can only appear in method results
+// contravariant type parameters can only appear in method parameters
+// and invariant types can appear anywhere
+
+var l1 = List(1,2,3)
+var l2 = List(4,5,6)
+var l3 = l1 :: l2
+var l4 = l1 ::: l2
