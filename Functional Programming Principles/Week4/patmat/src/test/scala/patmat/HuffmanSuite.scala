@@ -4,9 +4,9 @@ class HuffmanSuite extends munit.FunSuite:
   import Huffman.*
 
   trait TestTrees {
-    val t1 = Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5)
-    val t2 = Fork(Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5), Leaf('d',4), List('a','b','d'), 9)
-    val t3 = makeCodeTree(makeCodeTree(Leaf('x', 1), Leaf('e', 1)), Leaf('t', 2))
+    val t1: Fork = Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5)
+    val t2: Fork = Fork(Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5), Leaf('d',4), List('a','b','d'), 9)
+    val t3: Fork = makeCodeTree(makeCodeTree(Leaf('x', 1), Leaf('e', 1)), Leaf('t', 2))
   }
 
 
