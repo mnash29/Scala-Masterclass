@@ -29,10 +29,29 @@ def mergeSort[T](xs: List[T])(f: (T, T) => Boolean): List[T] =
     def merge(xs: List[T], ys: List[T]): List[T] = (xs, ys) match
       case (Nil, ys) => ys
       case (xs, Nil) => xs
-      case (x :: xtail, y :: ytail) =>
-        if f(x, y) then x :: merge(xtail, ys)
-        else y :: merge(xs, ytail)
+      case (x :: xt, y :: yt) =>
+        if f(x, y) then x :: merge(xt, ys)
+        else y :: merge(xs, yt)
     val (left, right) = xs.splitAt(n)
     merge(mergeSort(left)(f), mergeSort(right)(f))
 
 mergeSort(l1CatL2)((x, y) => x < y)
+
+def scaleList(xs: List[Double], factor: Double): List[Double] = xs match
+  case Nil => xs
+  case y :: ys => y * factor :: scaleList(ys, factor)
+
+extension[T](xs: List[T])
+  def map[U](f: T => U): List[U] = xs match
+    case Nil => Nil
+    case y :: ys => f(y) :: ys.map(f)
+
+def scaleListExt(xs: List[Int], factor: Double): List[Double] =
+  xs.map(x => x * factor)
+
+scaleListExt(l2, 2.0)
+
+def squareList(l: List[Int]): List[Int] =
+  l.map(x => x * x)
+
+squareList(l2)
